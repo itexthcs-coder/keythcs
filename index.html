@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tải phần mềm & Nhận Key iTeX</title>
+    
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #3182ce;
+            --accent-color: #38a169;
+            --step-color: #2f855a;
+            --bg-body: #e6f2eb;
+            --border-color: #cbd5e0;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-body); color: #333; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .main-wrapper { background: #fff; max-width: 1200px; width: 100%; border-top: 15px solid #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 20px; box-sizing: border-box; }
+        .grid-container { display: grid; grid-template-columns: 280px 1fr 320px; gap: 20px; }
+        .side-col { display: flex; flex-direction: column; gap: 15px; }
+        .info-box { border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; background: #fcfcfc; }
+        .info-box h3 { text-align: center; color: var(--primary-color); margin-top: 0; margin-bottom: 15px; font-size: 16px; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+        .step-list { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6; }
+        .step-list li { margin-bottom: 8px; }
+        .step-list .step-title { color: var(--step-color); font-weight: bold; display: block; }
+        .feature-list { padding-left: 15px; margin: 0; font-size: 14px; line-height: 1.5; text-align: justify; }
+        .feature-list li { margin-bottom: 8px; }
+        .text-center { text-align: center; }
+        .qr-code { max-width: 150px; height: auto; border: 1px solid #e2e8f0; padding: 5px; border-radius: 4px; background: #fff; }
+        .fb-link { font-size: 13px; word-break: break-all; color: var(--secondary-color); text-decoration: none; }
+        .fb-link:hover { text-decoration: underline; }
+        .middle-col { text-align: center; padding: 0 10px; }
+        .banner-img { width: 100%; border-radius: 8px; margin-bottom: 15px; border: 1px solid var(--border-color); }
+        .middle-col h2 { color: var(--primary-color); margin-bottom: 5px; font-size: 22px; }
+        .subtitle { color: #666; margin-bottom: 20px; font-size: 14px; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px; }
+        input[type="text"] { width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px; box-sizing: border-box; }
+        input[type="text"]:focus { outline: none; border-color: var(--secondary-color); }
+        .btn { display: block; width: 100%; padding: 12px; font-size: 15px; font-weight: bold; color: #fff; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; box-sizing: border-box; margin-bottom: 15px; transition: all 0.2s; }
+        .btn:hover:not(:disabled) { opacity: 0.9; }
+        .btn:disabled { background-color: #a0aec0; cursor: not-allowed; }
+        .btn-download { background-color: var(--accent-color); }
+        .btn-generate { background-color: var(--secondary-color); }
+        .result-box { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--border-color); text-align: left; }
+        .key-container { display: flex; gap: 8px; margin-top: 8px; }
+        #licenseKey { background-color: #edf2f7; font-family: monospace; font-size: 13px; color: #2d3748; }
+        .btn-copy { background-color: #4a5568; color: white; border: none; border-radius: 4px; padding: 0 15px; cursor: pointer; font-weight: bold; }
+        @media (max-width: 900px) { .grid-container { grid-template-columns: 1fr; } .middle-col { order: -1; margin-bottom: 20px; } }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="grid-container">
+        <!-- Cột Trái -->
+        <div class="side-col">
+            <div class="info-box">
+                <h3>HƯỚNG DẪN</h3>
+                <ul class="step-list">
+                    <li><span class="step-title">Bước 1.</span> Tải phần mềm</li>
+                    <li><span class="step-title">Bước 2.</span> Giải nén thư mục iTeX</li>
+                    <li><span class="step-title">Bước 3.</span> Chạy file iTeX.exe để lấy ID của máy</li>
+                    <li><span class="step-title">Bước 4.</span> Nhập ID máy để nhận Key (mỗi ID chỉ được cấp một lần)</li>
+                    <li><span class="step-title">Bước 5.</span> Copy Key đăng nhập vào iTeX</li>
+                </ul>
+            </div>
+            
+            <div class="info-box text-center">
+                <h3>NHÓM ZALO</h3>
+                <img src="zalo_qr.png" alt="Mã QR Zalo" class="qr-code" onerror="this.src='https://via.placeholder.com/150?text=QR+Zalo'">
+            </div>
+        </div>
+
+        <!-- Cột Giữa -->
+        <div class="middle-col">
+            <img src="splash.png" alt="iTeX Banner" class="banner-img" onerror="this.style.display='none'">
+            
+            <h2>Kích hoạt phần mềm iTeX</h2>
+            <p class="subtitle">Nhận Key bản quyền miễn phí · Thời hạn sử dụng 90 ngày · Mỗi ID chỉ cấp một Key</p>
+
+            <a href="https://drive.usercontent.google.com/download?id=1KMEYIMY73BZwZierFsojYvR0w7V044Oe&export=download&authuser=0" class="btn btn-download" target="_blank">📥 Tải phần mềm iTeX</a>
+
+            <div class="form-group">
+                <label for="macAddress">Nhập ID của máy:</label>
+                <input type="text" id="macAddress" placeholder="VD: 0025_38B2_71B2_B69E.">
+            </div>
+
+            <button class="btn btn-generate" id="btnGenerate" onclick="generateKey()">Nhận Key Miễn Phí</button>
+
+            <!-- Hiển thị Key -->
+            <div class="result-box" id="resultBox">
+                <label>Key kích hoạt (thời hạn 90 ngày):</label>
+                <div class="key-container">
+                    <input type="text" id="licenseKey" readonly>
+                    <button class="btn-copy" onclick="copyKey()" id="copyBtn">Copy</button>
+                </div>
+                <p style="font-size: 13px; font-weight: 600; margin-top: 10px;" id="expiryNotice"></p>
+            </div>
+        </div>
+
+        <!-- Cột Phải -->
+        <div class="side-col">
+            <div class="info-box">
+                <h3>GIỚI THIỆU</h3>
+                <ol class="feature-list">
+                    <li>Xuất tài liệu, đáp án tài liệu cho học sinh ôn tập với số lượng tùy ý</li>
+                    <li>Xuất đề thi, đáp án, QrCode, với số lượng mã đề tùy ý. Xuất ma trận, đặc tả đề theo công văn của Bộ</li>
+                    <li>Tạo đề kiểm tra Online. Thống kê chi tiết đầy đủ kết quả học sinh.</li>
+                    <li>Xuất slide trình chiếu dạy học trên lớp</li>
+                    <li>Chatbot AI hỗ trợ tạo các câu hỏi cơ bản</li>
+                    <li>Phần mềm linh hoạt xuất ra các tài liệu PDF và Word</li>
+                </ol>
+            </div>
+
+            <div class="info-box text-center">
+                <h3>NHÓM FACEBOOK</h3>
+                <a href="https://www.facebook.com/share/g/1Jizxu1uL3/" class="fb-link" target="_blank">Cộng đồng người dùng iTeX</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxP9ivP7Q9oDc8zd8UNJWOq6bddkaVeWtY9LGKYHdQOgJL9t7hxWDjY4fsqcSN8SOLW/exec";
+
+    async function generateKey() {
+        const serialNumber = document.getElementById('macAddress').value.trim();
+        if (!serialNumber) {
+            alert("Vui lòng nhập mã máy (Serial/MAC)!");
+            return;
+        }
+
+        const btn = document.getElementById('btnGenerate');
+        const resultBox = document.getElementById('resultBox');
+        const expiryNotice = document.getElementById('expiryNotice');
+
+        btn.innerText = "Đang kết nối hệ thống...";
+        btn.disabled = true;
+        resultBox.style.display = 'none';
+
+        try {
+            // Gửi trực tiếp yêu cầu xin Key lên Google Apps Script
+            const response = await fetch(`${SCRIPT_URL}?id=${encodeURIComponent(serialNumber)}&days=90`, {
+                method: "GET",
+                redirect: "follow"
+            });
+            const data = await response.json();
+
+            if (!response.ok || data.status === "error") {
+                alert("Không thể cấp Key: " + (data.message || "Máy chủ trả về lỗi."));
+                return;
+            }
+
+            if (!data.key || !["ok", "exists"].includes(data.status)) {
+                alert("Phản hồi từ máy chủ không hợp lệ. Vui lòng liên hệ hỗ trợ iTeX.");
+                return;
+            }
+
+            document.getElementById('licenseKey').value = data.key;
+            resultBox.style.display = 'block';
+
+            if (data.status === "exists") {
+                expiryNotice.innerText = `⚠️ ID này đã được cấp Key. Hệ thống trả lại Key cũ, không tạo Key mới. Hạn sử dụng đến ${data.exp || "theo thông tin Key"}.`;
+                expiryNotice.style.color = "#d69e2e";
+            } else {
+                expiryNotice.innerText = `✅ Cấp Key thành công! Key có thời hạn 90 ngày, đến ${data.exp || "theo thông tin máy chủ"}.`;
+                expiryNotice.style.color = "var(--accent-color)";
+            }
+
+            const copyBtn = document.getElementById('copyBtn');
+            copyBtn.innerText = 'Copy';
+            copyBtn.style.backgroundColor = '#4a5568';
+
+        } catch (error) {
+            alert("Lỗi kết nối máy chủ! Vui lòng thử lại sau vài giây.");
+            console.error("Lỗi:", error);
+        } finally {
+            btn.innerText = "Nhận Key Miễn Phí";
+            btn.disabled = false;
+        }
+    }
+
+    function copyKey() {
+        const copyText = document.getElementById("licenseKey");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value).then(() => {
+            const btn = document.getElementById("copyBtn");
+            btn.innerText = "Đã Copy!";
+            btn.style.backgroundColor = "var(--accent-color)";
+        });
+    }
+</script>
+
+</body>
+</html>
