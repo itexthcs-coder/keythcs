@@ -61,7 +61,7 @@
                     <li><span class="step-title">Bước 1.</span> Tải phần mềm</li>
                     <li><span class="step-title">Bước 2.</span> Giải nén thư mục iTeX</li>
                     <li><span class="step-title">Bước 3.</span> Chạy file iTeX.exe để lấy ID của máy</li>
-                    <li><span class="step-title">Bước 4.</span> Nhập ID máy để nhận Key (mỗi ID chỉ được cấp một lần)</li>
+                    <li><span class="step-title">Bước 4.</span> Nhập ID của máy vào nhận Key miễn phí</li>
                     <li><span class="step-title">Bước 5.</span> Copy Key đăng nhập vào iTeX</li>
                 </ul>
             </div>
@@ -77,7 +77,7 @@
             <img src="splash.png" alt="iTeX Banner" class="banner-img" onerror="this.style.display='none'">
             
             <h2>Kích hoạt phần mềm iTeX</h2>
-            <p class="subtitle">Nhận Key bản quyền miễn phí · Thời hạn sử dụng 90 ngày · Mỗi ID chỉ cấp một Key</p>
+            <p class="subtitle">Tải bộ cài đặt và nhận key bản quyền miễn phí</p>
 
             <a href="https://drive.usercontent.google.com/download?id=1KMEYIMY73BZwZierFsojYvR0w7V044Oe&export=download&authuser=0" class="btn btn-download" target="_blank">📥 Tải phần mềm iTeX</a>
 
@@ -90,7 +90,7 @@
 
             <!-- Hiển thị Key -->
             <div class="result-box" id="resultBox">
-                <label>Key kích hoạt (thời hạn 90 ngày):</label>
+                <label>Key kích hoạt của bạn:</label>
                 <div class="key-container">
                     <input type="text" id="licenseKey" readonly>
                     <button class="btn-copy" onclick="copyKey()" id="copyBtn">Copy</button>
@@ -141,19 +141,14 @@
 
         try {
             // Gửi trực tiếp yêu cầu xin Key lên Google Apps Script
-            const response = await fetch(`${SCRIPT_URL}?id=${encodeURIComponent(serialNumber)}&days=90`, {
+            const response = await fetch(`${SCRIPT_URL}?id=${encodeURIComponent(serialNumber)}`, {
                 method: "GET",
                 redirect: "follow"
             });
             const data = await response.json();
 
-            if (!response.ok || data.status === "error") {
-                alert("Không thể cấp Key: " + (data.message || "Máy chủ trả về lỗi."));
-                return;
-            }
-
-            if (!data.key || !["ok", "exists"].includes(data.status)) {
-                alert("Phản hồi từ máy chủ không hợp lệ. Vui lòng liên hệ hỗ trợ iTeX.");
+            if (data.status === "error") {
+                alert("Lỗi: " + data.message);
                 return;
             }
 
@@ -161,10 +156,10 @@
             resultBox.style.display = 'block';
 
             if (data.status === "exists") {
-                expiryNotice.innerText = `⚠️ ID này đã được cấp Key. Hệ thống trả lại Key cũ, không tạo Key mới. Hạn sử dụng đến ${data.exp || "theo thông tin Key"}.`;
+                expiryNotice.innerText = "⚠️ ID này đã được cấp Key trước đó. Đây là Key của bạn:";
                 expiryNotice.style.color = "#d69e2e";
-            } else {
-                expiryNotice.innerText = `✅ Cấp Key thành công! Key có thời hạn 90 ngày, đến ${data.exp || "theo thông tin máy chủ"}.`;
+            } else if (data.status === "ok") {
+                expiryNotice.innerText = `✅ Đã tạo Key thành công! (Hạn đến ${data.exp})`;
                 expiryNotice.style.color = "var(--accent-color)";
             }
 
